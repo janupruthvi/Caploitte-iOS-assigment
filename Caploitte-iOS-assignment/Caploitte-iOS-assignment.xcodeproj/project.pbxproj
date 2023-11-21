@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		63DB33122B0BB3EE00432F72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB33112B0BB3EE00432F72 /* AppDelegate.swift */; };
 		63DB33142B0BB3EE00432F72 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB33132B0BB3EE00432F72 /* SceneDelegate.swift */; };
-		63DB33162B0BB3EE00432F72 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB33152B0BB3EE00432F72 /* ViewController.swift */; };
 		63DB33192B0BB3EE00432F72 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63DB33172B0BB3EE00432F72 /* Main.storyboard */; };
 		63DB331B2B0BB3F000432F72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63DB331A2B0BB3F000432F72 /* Assets.xcassets */; };
 		63DB331E2B0BB3F000432F72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63DB331C2B0BB3F000432F72 /* LaunchScreen.storyboard */; };
@@ -18,13 +17,17 @@
 		63DB332A2B0C495300432F72 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DB33282B0C495300432F72 /* CollectionViewCell.xib */; };
 		63DB332D2B0C643200432F72 /* NewsCategoryButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB332B2B0C643200432F72 /* NewsCategoryButtonCell.swift */; };
 		63DB332E2B0C643200432F72 /* NewsCategoryButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DB332C2B0C643200432F72 /* NewsCategoryButtonCell.xib */; };
+		63DB33302B0CDB6E00432F72 /* NewsObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB332F2B0CDB6E00432F72 /* NewsObjectModel.swift */; };
+		63DB33322B0CDD0800432F72 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB33312B0CDD0800432F72 /* NetworkService.swift */; };
+		63DB33342B0CDE7900432F72 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB33332B0CDE7900432F72 /* APIError.swift */; };
+		63DB333E2B0CF38300432F72 /* NewsCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB333C2B0CF38300432F72 /* NewsCardTableViewCell.swift */; };
+		63DB333F2B0CF38300432F72 /* NewsCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DB333D2B0CF38300432F72 /* NewsCardTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		63DB330E2B0BB3EE00432F72 /* Caploitte-iOS-assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Caploitte-iOS-assignment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63DB33112B0BB3EE00432F72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63DB33132B0BB3EE00432F72 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		63DB33152B0BB3EE00432F72 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		63DB33182B0BB3EE00432F72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		63DB331A2B0BB3F000432F72 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63DB331D2B0BB3F000432F72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -34,6 +37,11 @@
 		63DB33282B0C495300432F72 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		63DB332B2B0C643200432F72 /* NewsCategoryButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCategoryButtonCell.swift; sourceTree = "<group>"; };
 		63DB332C2B0C643200432F72 /* NewsCategoryButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCategoryButtonCell.xib; sourceTree = "<group>"; };
+		63DB332F2B0CDB6E00432F72 /* NewsObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsObjectModel.swift; sourceTree = "<group>"; };
+		63DB33312B0CDD0800432F72 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		63DB33332B0CDE7900432F72 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		63DB333C2B0CF38300432F72 /* NewsCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsCardTableViewCell.swift; path = "Caploitte-iOS-assignment/common/views/NewsCardTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		63DB333D2B0CF38300432F72 /* NewsCardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NewsCardTableViewCell.xib; path = "Caploitte-iOS-assignment/common/views/NewsCardTableViewCell.xib"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,20 +74,80 @@
 		63DB33102B0BB3EE00432F72 /* Caploitte-iOS-assignment */ = {
 			isa = PBXGroup;
 			children = (
+				63DB33382B0CEFC700432F72 /* common */,
+				63DB33352B0CEF5000432F72 /* screens */,
 				63DB33112B0BB3EE00432F72 /* AppDelegate.swift */,
 				63DB33132B0BB3EE00432F72 /* SceneDelegate.swift */,
-				63DB33152B0BB3EE00432F72 /* ViewController.swift */,
-				63DB33252B0BC3DC00432F72 /* HomeScreenViewController.swift */,
-				63DB33172B0BB3EE00432F72 /* Main.storyboard */,
+				63DB33312B0CDD0800432F72 /* NetworkService.swift */,
+				63DB33332B0CDE7900432F72 /* APIError.swift */,
 				63DB331A2B0BB3F000432F72 /* Assets.xcassets */,
-				63DB331C2B0BB3F000432F72 /* LaunchScreen.storyboard */,
 				63DB331F2B0BB3F000432F72 /* Info.plist */,
+			);
+			path = "Caploitte-iOS-assignment";
+			sourceTree = "<group>";
+		};
+		63DB33352B0CEF5000432F72 /* screens */ = {
+			isa = PBXGroup;
+			children = (
+				63DB33362B0CEF5900432F72 /* homeScreen */,
+			);
+			path = screens;
+			sourceTree = "<group>";
+		};
+		63DB33362B0CEF5900432F72 /* homeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				63DB333B2B0CF04000432F72 /* controller */,
+				63DB333A2B0CF03200432F72 /* views */,
+			);
+			path = homeScreen;
+			sourceTree = "<group>";
+		};
+		63DB33372B0CEFA700432F72 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				63DB332F2B0CDB6E00432F72 /* NewsObjectModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		63DB33382B0CEFC700432F72 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				63DB33372B0CEFA700432F72 /* Models */,
+				63DB33392B0CEFD200432F72 /* views */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		63DB33392B0CEFD200432F72 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				63DB33172B0BB3EE00432F72 /* Main.storyboard */,
+				63DB331C2B0BB3F000432F72 /* LaunchScreen.storyboard */,
+				63DB333C2B0CF38300432F72 /* NewsCardTableViewCell.swift */,
+				63DB333D2B0CF38300432F72 /* NewsCardTableViewCell.xib */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		63DB333A2B0CF03200432F72 /* views */ = {
+			isa = PBXGroup;
+			children = (
 				63DB33272B0C495300432F72 /* CollectionViewCell.swift */,
 				63DB33282B0C495300432F72 /* CollectionViewCell.xib */,
 				63DB332B2B0C643200432F72 /* NewsCategoryButtonCell.swift */,
 				63DB332C2B0C643200432F72 /* NewsCategoryButtonCell.xib */,
 			);
-			path = "Caploitte-iOS-assignment";
+			path = views;
+			sourceTree = "<group>";
+		};
+		63DB333B2B0CF04000432F72 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				63DB33252B0BC3DC00432F72 /* HomeScreenViewController.swift */,
+			);
+			path = controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +210,7 @@
 			files = (
 				63DB332E2B0C643200432F72 /* NewsCategoryButtonCell.xib in Resources */,
 				63DB331E2B0BB3F000432F72 /* LaunchScreen.storyboard in Resources */,
+				63DB333F2B0CF38300432F72 /* NewsCardTableViewCell.xib in Resources */,
 				63DB331B2B0BB3F000432F72 /* Assets.xcassets in Resources */,
 				63DB332A2B0C495300432F72 /* CollectionViewCell.xib in Resources */,
 				63DB33192B0BB3EE00432F72 /* Main.storyboard in Resources */,
@@ -155,12 +224,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63DB33302B0CDB6E00432F72 /* NewsObjectModel.swift in Sources */,
 				63DB33292B0C495300432F72 /* CollectionViewCell.swift in Sources */,
-				63DB33162B0BB3EE00432F72 /* ViewController.swift in Sources */,
+				63DB33322B0CDD0800432F72 /* NetworkService.swift in Sources */,
 				63DB332D2B0C643200432F72 /* NewsCategoryButtonCell.swift in Sources */,
 				63DB33262B0BC3DC00432F72 /* HomeScreenViewController.swift in Sources */,
+				63DB333E2B0CF38300432F72 /* NewsCardTableViewCell.swift in Sources */,
 				63DB33122B0BB3EE00432F72 /* AppDelegate.swift in Sources */,
 				63DB33142B0BB3EE00432F72 /* SceneDelegate.swift in Sources */,
+				63DB33342B0CDE7900432F72 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

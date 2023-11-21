@@ -10,53 +10,64 @@ import UIKit
 class HomeScreenViewController: UIViewController {
 
     @IBOutlet weak var searchTxtField: UITextField!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var headlinesCollectionView: UICollectionView!
     @IBOutlet weak var newsCatButtonCollectionView: UICollectionView!
+    @IBOutlet weak var newsCardsTableView: UITableView!
     
+    var newsList: [ArticlesObjectModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CollectionViewCell")
-        self.newsCatButtonCollectionView.register(UINib(nibName: "NewsCategoryButtonCell", bundle: nil), forCellWithReuseIdentifier: "NewsCategoryButtonCell")
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        newsCatButtonCollectionView.dataSource = self
-        newsCatButtonCollectionView.delegate = self
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        let layout2 = UICollectionViewFlowLayout()
-        layout2.scrollDirection = .horizontal
-        layout2.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        collectionView.collectionViewLayout = layout
-        newsCatButtonCollectionView.collectionViewLayout = layout2
-        
+
+        configNIBs()
+        setupUI()
+
         Task {
             do {
                 let newsList = try await NetworkService.shared.getNewsFeed()
-                print("newsList", newsList)
+                self.newsList = newsList.articles ?? []
+                newsCardsTableView.reloadData()
             } catch {
                 print("error ", error.localizedDescription)
             }
         }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setupUI() {
+        
+        let headlinesCollectionViewLayout = UICollectionViewFlowLayout()
+        headlinesCollectionViewLayout.scrollDirection = .horizontal
+        let newsCatButtonCollectionViewLayout = UICollectionViewFlowLayout()
+        newsCatButtonCollectionViewLayout.scrollDirection = .horizontal
+        newsCatButtonCollectionViewLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        headlinesCollectionView.collectionViewLayout = headlinesCollectionViewLayout
+        newsCatButtonCollectionView.collectionViewLayout = newsCatButtonCollectionViewLayout
+        
+        headlinesCollectionView.dataSource = self
+        headlinesCollectionView.delegate = self
+        
+        newsCatButtonCollectionView.dataSource = self
+        newsCatButtonCollectionView.delegate = self
+        newsCardsTableView.dataSource = self
+        
+        newsCardsTableView.rowHeight = 150
+        newsCardsTableView.separatorStyle = .none
+        
+        
     }
-    */
-
+    
+    func configNIBs() {
+        self.headlinesCollectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CollectionViewCell")
+        self.newsCatButtonCollectionView.register(UINib(nibName: "NewsCategoryButtonCell", bundle: nil), forCellWithReuseIdentifier: "NewsCategoryButtonCell")
+        self.newsCardsTableView.register(UINib(nibName: "NewsCardTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsCardTableViewCell")
+    }
+    
 }
 
 extension HomeScreenViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == self.collectionView {
+        if collectionView == self.headlinesCollectionView {
             return 5
         } else {
             return 6
@@ -66,7 +77,7 @@ extension HomeScreenViewController: UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == self.collectionView {
+        if collectionView == self.headlinesCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
             return cell
         } else {
@@ -78,37 +89,32 @@ extension HomeScreenViewController: UICollectionViewDataSource {
         }
     }
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        1
-    }
 }
 
 extension HomeScreenViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == self.collectionView {
+        if collectionView == self.headlinesCollectionView {
             return CGSize(width: 320, height: 300)
         } else {
             return collectionView.frame.size
         }
     }
     
-    
-    
-    
 }
 
-//extension HomeScreenViewController: UIScrollViewDelegate {
-//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//        let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-//        let cellSpacing = layout.itemSize.width + layout.minimumLineSpacing
-//
-//        var offset = targetContentOffset.pointee
-//        let index = (offset.x + scrollView.contentInset.left) / cellSpacing
-//        let roundedIndex = round(index)
-//
-//        offset = CGPoint(x: roundedIndex * cellSpacing - scrollView.contentInset.left, y: scrollView.contentInset.top)
-//
-//        targetContentOffset.pointee = offset
-//    }
-//}
+extension HomeScreenViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        newsList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCardTableViewCell", for: indexPath) as! NewsCardTableViewCell
+        
+        cell.newsArticle = self.newsList[indexPath.item]
+        
+        return cell
+    }
+    
+}

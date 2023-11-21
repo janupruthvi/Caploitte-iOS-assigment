@@ -7,8 +7,8 @@
 
 import Foundation
 
-class static APIErrors {
-    
-    
-    
+enum APIError: Error {
+    case invalidURL
+    case serverError
+    case dataError
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 struct NewsObjectModel: Codable {
-    let articles: [ArticlesObjectModel?]
+    let articles: [ArticlesObjectModel]?
 }
 
 struct ArticlesObjectModel: Codable {
