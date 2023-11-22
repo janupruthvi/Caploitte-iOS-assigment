@@ -81,7 +81,6 @@ class NewsCardTableViewCell: UITableViewCell {
             if let data = try? Data(contentsOf: url) {
                 if let image = UIImage(data: data) {
                     DispatchQueue.main.async {
-                        //self?.newsCardParentView.backgroundColor = UIColor(patternImage: image)
                         self?.backgroundImageToParentView(image: image)
                     }
                 }

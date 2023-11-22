@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6WO-F9-s8Q">
-                        <rect key="frame" x="0.0" y="3" width="320" height="157"/>
+                        <rect key="frame" x="0.0" y="3" width="320" height="155"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eok-NF-xCx">
                                 <rect key="frame" x="3" y="2" width="314" height="19.333333333333332"/>
@@ -27,13 +27,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WeI-bE-u15">
-                                <rect key="frame" x="3" y="138" width="173" height="16"/>
+                                <rect key="frame" x="3" y="136" width="173" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="publishedAt" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yhr-Cy-Lui">
-                                <rect key="frame" x="202.33333333333334" y="138" width="114.66666666666666" height="16"/>
+                                <rect key="frame" x="202.33333333333334" y="136" width="114.66666666666666" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -56,7 +56,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="6WO-F9-s8Q" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="IaU-sv-MlL"/>
-                    <constraint firstAttribute="bottom" secondItem="6WO-F9-s8Q" secondAttribute="bottom" constant="3" id="XBw-qI-igK"/>
+                    <constraint firstAttribute="bottom" secondItem="6WO-F9-s8Q" secondAttribute="bottom" constant="5" id="XBw-qI-igK"/>
                     <constraint firstAttribute="trailing" secondItem="6WO-F9-s8Q" secondAttribute="trailing" id="bpH-aL-5tW"/>
                     <constraint firstItem="6WO-F9-s8Q" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="eug-SS-OhB"/>
                 </constraints>

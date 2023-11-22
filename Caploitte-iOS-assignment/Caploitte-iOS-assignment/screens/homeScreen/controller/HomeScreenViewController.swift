@@ -28,7 +28,7 @@ class HomeScreenViewController: UIViewController {
                 self.newsList = newsList.articles ?? []
                 newsCardsTableView.reloadData()
             } catch {
-                print("error ", error.localizedDescription)
+                print("error ", error)
             }
         }
     }
@@ -48,7 +48,11 @@ class HomeScreenViewController: UIViewController {
         
         newsCatButtonCollectionView.dataSource = self
         newsCatButtonCollectionView.delegate = self
+        
         newsCardsTableView.dataSource = self
+        newsCardsTableView.delegate = self
+        
+        searchTxtField.delegate = self
         
         newsCardsTableView.rowHeight = 150
         newsCardsTableView.separatorStyle = .none
@@ -60,6 +64,24 @@ class HomeScreenViewController: UIViewController {
         self.headlinesCollectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CollectionViewCell")
         self.newsCatButtonCollectionView.register(UINib(nibName: "NewsCategoryButtonCell", bundle: nil), forCellWithReuseIdentifier: "NewsCategoryButtonCell")
         self.newsCardsTableView.register(UINib(nibName: "NewsCardTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsCardTableViewCell")
+    }
+    
+    func searchNews() {
+        
+        if let searchText = self.searchTxtField.text, !searchText.isEmpty {
+            let searchScreenVC = self.storyboard?.instantiateViewController(withIdentifier: "SearchScreenVC") as! SearchScreenViewController
+            searchScreenVC.searchText = searchText
+            self.navigationController?.pushViewController(searchScreenVC, animated: true)
+        }
+        
+    }
+    
+    func navigateToNewsDetails(newArticleObj: ArticlesObjectModel) {
+        let newsDetailScreenVC = self.storyboard?.instantiateViewController(withIdentifier: "newsDetailsScreenVC") as! NewsDetailViewController
+        
+        newsDetailScreenVC.newsArticleObj = newArticleObj
+        
+        self.navigationController?.pushViewController(newsDetailScreenVC, animated: true)
     }
     
     @IBAction func seeAllBtnTapped(_ sender: Any) {
@@ -123,4 +145,21 @@ extension HomeScreenViewController: UITableViewDataSource {
         return cell
     }
     
+}
+
+extension HomeScreenViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigateToNewsDetails(newArticleObj: self.newsList[indexPath.item])
+    }
+    
+}
+
+extension HomeScreenViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchNews()
+        textField.resignFirstResponder()
+        textField.text = ""
+        return true
+    }
 }

@@ -23,6 +23,12 @@
 		63DB333E2B0CF38300432F72 /* NewsCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB333C2B0CF38300432F72 /* NewsCardTableViewCell.swift */; };
 		63DB333F2B0CF38300432F72 /* NewsCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DB333D2B0CF38300432F72 /* NewsCardTableViewCell.xib */; };
 		63DB33422B0D95EE00432F72 /* NewsListScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB33412B0D95EE00432F72 /* NewsListScreenViewController.swift */; };
+		63DB33462B0DA23700432F72 /* SearchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB33452B0DA23700432F72 /* SearchScreenViewController.swift */; };
+		63DB334B2B0DC5D100432F72 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB334A2B0DC5D100432F72 /* NewsDetailViewController.swift */; };
+		63DB334E2B0DE36800432F72 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63DB334D2B0DE36800432F72 /* Authentication.storyboard */; };
+		63DB33522B0DF15D00432F72 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB33512B0DF15D00432F72 /* LoginViewController.swift */; };
+		63DB33542B0DF18D00432F72 /* RegisterUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB33532B0DF18D00432F72 /* RegisterUserViewController.swift */; };
+		63DB33562B0E0D0300432F72 /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB33552B0E0D0300432F72 /* UserDefaultService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +50,12 @@
 		63DB333C2B0CF38300432F72 /* NewsCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsCardTableViewCell.swift; path = "Caploitte-iOS-assignment/common/views/NewsCardTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		63DB333D2B0CF38300432F72 /* NewsCardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NewsCardTableViewCell.xib; path = "Caploitte-iOS-assignment/common/views/NewsCardTableViewCell.xib"; sourceTree = SOURCE_ROOT; };
 		63DB33412B0D95EE00432F72 /* NewsListScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListScreenViewController.swift; sourceTree = "<group>"; };
+		63DB33452B0DA23700432F72 /* SearchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenViewController.swift; sourceTree = "<group>"; };
+		63DB334A2B0DC5D100432F72 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
+		63DB334D2B0DE36800432F72 /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
+		63DB33512B0DF15D00432F72 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		63DB33532B0DF18D00432F72 /* RegisterUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserViewController.swift; sourceTree = "<group>"; };
+		63DB33552B0E0D0300432F72 /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefaultService.swift; path = "Caploitte-iOS-assignment/UserDefaultService.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +93,7 @@
 				63DB33112B0BB3EE00432F72 /* AppDelegate.swift */,
 				63DB33132B0BB3EE00432F72 /* SceneDelegate.swift */,
 				63DB33312B0CDD0800432F72 /* NetworkService.swift */,
+				63DB33552B0E0D0300432F72 /* UserDefaultService.swift */,
 				63DB33332B0CDE7900432F72 /* APIError.swift */,
 				63DB331A2B0BB3F000432F72 /* Assets.xcassets */,
 				63DB331F2B0BB3F000432F72 /* Info.plist */,
@@ -91,8 +104,11 @@
 		63DB33352B0CEF5000432F72 /* screens */ = {
 			isa = PBXGroup;
 			children = (
+				63DB334C2B0DE34100432F72 /* Authentication */,
 				63DB33362B0CEF5900432F72 /* homeScreen */,
 				63DB33402B0D95B500432F72 /* newListScreen */,
+				63DB33442B0DA20E00432F72 /* searchScreen */,
+				63DB33472B0DBACF00432F72 /* newsDetailScreen */,
 			);
 			path = screens;
 			sourceTree = "<group>";
@@ -156,9 +172,75 @@
 		63DB33402B0D95B500432F72 /* newListScreen */ = {
 			isa = PBXGroup;
 			children = (
-				63DB33412B0D95EE00432F72 /* NewsListScreenViewController.swift */,
+				63DB33432B0DA09D00432F72 /* controller */,
 			);
 			path = newListScreen;
+			sourceTree = "<group>";
+		};
+		63DB33432B0DA09D00432F72 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				63DB33412B0D95EE00432F72 /* NewsListScreenViewController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		63DB33442B0DA20E00432F72 /* searchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				63DB33482B0DC5AA00432F72 /* controller */,
+			);
+			path = searchScreen;
+			sourceTree = "<group>";
+		};
+		63DB33472B0DBACF00432F72 /* newsDetailScreen */ = {
+			isa = PBXGroup;
+			children = (
+				63DB33492B0DC5B900432F72 /* controller */,
+			);
+			path = newsDetailScreen;
+			sourceTree = "<group>";
+		};
+		63DB33482B0DC5AA00432F72 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				63DB33452B0DA23700432F72 /* SearchScreenViewController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		63DB33492B0DC5B900432F72 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				63DB334A2B0DC5D100432F72 /* NewsDetailViewController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		63DB334C2B0DE34100432F72 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				63DB334F2B0DE36D00432F72 /* views */,
+				63DB33502B0DF13A00432F72 /* controller */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		63DB334F2B0DE36D00432F72 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				63DB334D2B0DE36800432F72 /* Authentication.storyboard */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		63DB33502B0DF13A00432F72 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				63DB33512B0DF15D00432F72 /* LoginViewController.swift */,
+				63DB33532B0DF18D00432F72 /* RegisterUserViewController.swift */,
+			);
+			path = controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63DB332E2B0C643200432F72 /* NewsCategoryButtonCell.xib in Resources */,
+				63DB334E2B0DE36800432F72 /* Authentication.storyboard in Resources */,
 				63DB331E2B0BB3F000432F72 /* LaunchScreen.storyboard in Resources */,
 				63DB333F2B0CF38300432F72 /* NewsCardTableViewCell.xib in Resources */,
 				63DB331B2B0BB3F000432F72 /* Assets.xcassets in Resources */,
@@ -235,6 +318,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63DB334B2B0DC5D100432F72 /* NewsDetailViewController.swift in Sources */,
+				63DB33462B0DA23700432F72 /* SearchScreenViewController.swift in Sources */,
 				63DB33302B0CDB6E00432F72 /* NewsObjectModel.swift in Sources */,
 				63DB33422B0D95EE00432F72 /* NewsListScreenViewController.swift in Sources */,
 				63DB33292B0C495300432F72 /* CollectionViewCell.swift in Sources */,
@@ -243,7 +328,10 @@
 				63DB33262B0BC3DC00432F72 /* HomeScreenViewController.swift in Sources */,
 				63DB333E2B0CF38300432F72 /* NewsCardTableViewCell.swift in Sources */,
 				63DB33122B0BB3EE00432F72 /* AppDelegate.swift in Sources */,
+				63DB33542B0DF18D00432F72 /* RegisterUserViewController.swift in Sources */,
 				63DB33142B0BB3EE00432F72 /* SceneDelegate.swift in Sources */,
+				63DB33522B0DF15D00432F72 /* LoginViewController.swift in Sources */,
+				63DB33562B0E0D0300432F72 /* UserDefaultService.swift in Sources */,
 				63DB33342B0CDE7900432F72 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
