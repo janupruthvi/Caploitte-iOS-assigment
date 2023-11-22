@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="y6h-7Y-LNc">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -34,6 +34,9 @@
                                 <rect key="frame" x="301" y="134.33333333333334" width="77" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="See All"/>
+                                <connections>
+                                    <action selector="seeAllBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T3S-bj-RFi"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nPx-qV-Lna">
                                 <rect key="frame" x="342" y="74.666666666666671" width="35" height="35"/>
@@ -105,6 +108,7 @@
                             <constraint firstItem="rde-aW-GlD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="zjA-VI-crp"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="80a-K7-aS6"/>
                     <connections>
                         <outlet property="headlinesCollectionView" destination="PZE-Od-5aN" id="65U-ZB-1CZ"/>
                         <outlet property="newsCardsTableView" destination="rde-aW-GlD" id="QuC-W4-qOt"/>
@@ -114,11 +118,79 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="973.28244274809151" y="-27.464788732394368"/>
+        </scene>
+        <!--News List Screen View Controller-->
+        <scene sceneID="JEI-xk-f0W">
+            <objects>
+                <viewController storyboardIdentifier="NewsListVC" id="hsj-uI-ABn" customClass="NewsListScreenViewController" customModule="Caploitte_iOS_assignment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6cQ-4H-STO">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View All News" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dI1-ex-sbz">
+                                <rect key="frame" x="143" y="69" width="107" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.8641038875" green="0.35695560710000002" blue="0.28716131299999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBn-Iw-wDd">
+                                <rect key="frame" x="15.999999999999996" y="62.333333333333329" width="39.666666666666657" height="34.333333333333329"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system"/>
+                                <connections>
+                                    <action selector="backBtnPressed:" destination="hsj-uI-ABn" eventType="touchUpInside" id="8eY-Jg-6lQ"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="n3n-bn-vEm">
+                                <rect key="frame" x="15" y="106.66666666666669" width="363" height="711.33333333333326"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="joi-kp-cwb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="n3n-bn-vEm" firstAttribute="bottom" secondItem="joi-kp-cwb" secondAttribute="bottom" id="K1Q-nX-gjj"/>
+                            <constraint firstItem="dI1-ex-sbz" firstAttribute="centerX" secondItem="6cQ-4H-STO" secondAttribute="centerX" id="NgT-ji-fRY"/>
+                            <constraint firstItem="HBn-Iw-wDd" firstAttribute="leading" secondItem="joi-kp-cwb" secondAttribute="leading" constant="16" id="QWt-Kr-gKC"/>
+                            <constraint firstItem="joi-kp-cwb" firstAttribute="trailing" secondItem="n3n-bn-vEm" secondAttribute="trailing" constant="15" id="S9Z-l8-Xrt"/>
+                            <constraint firstItem="n3n-bn-vEm" firstAttribute="top" secondItem="HBn-Iw-wDd" secondAttribute="bottom" constant="10" id="fRi-d1-ZV2"/>
+                            <constraint firstItem="dI1-ex-sbz" firstAttribute="top" secondItem="joi-kp-cwb" secondAttribute="top" constant="10" id="hH0-DH-16s"/>
+                            <constraint firstItem="n3n-bn-vEm" firstAttribute="leading" secondItem="joi-kp-cwb" secondAttribute="leading" constant="15" id="xDm-Gx-r8f"/>
+                            <constraint firstItem="HBn-Iw-wDd" firstAttribute="centerY" secondItem="dI1-ex-sbz" secondAttribute="centerY" id="ydt-a1-PlY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="newsListTableView" destination="n3n-bn-vEm" id="wWb-CU-WHQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DmV-I3-Ork" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1834.3511450381679" y="-27.464788732394368"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="U7c-gP-PmF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="y6h-7Y-LNc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MEs-bp-Qgh">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="EOG-mc-eNd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gnj-1e-lhO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="46.564885496183201" y="-27.464788732394368"/>
         </scene>
     </scenes>
     <resources>
         <image name="BellNotification" width="14" height="17"/>
+        <image name="chevron.backward" catalog="system" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

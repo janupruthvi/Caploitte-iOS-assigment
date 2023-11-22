@@ -62,6 +62,12 @@ class HomeScreenViewController: UIViewController {
         self.newsCardsTableView.register(UINib(nibName: "NewsCardTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsCardTableViewCell")
     }
     
+    @IBAction func seeAllBtnTapped(_ sender: Any) {
+        let newsListScreenVC = self.storyboard?.instantiateViewController(withIdentifier: "NewsListVC") as! NewsListScreenViewController
+        self.navigationController?.pushViewController(newsListScreenVC, animated: true)
+    }
+    
+    
 }
 
 extension HomeScreenViewController: UICollectionViewDataSource {

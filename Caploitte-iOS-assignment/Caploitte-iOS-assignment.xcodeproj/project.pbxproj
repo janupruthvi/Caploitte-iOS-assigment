@@ -22,6 +22,7 @@
 		63DB33342B0CDE7900432F72 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB33332B0CDE7900432F72 /* APIError.swift */; };
 		63DB333E2B0CF38300432F72 /* NewsCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB333C2B0CF38300432F72 /* NewsCardTableViewCell.swift */; };
 		63DB333F2B0CF38300432F72 /* NewsCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DB333D2B0CF38300432F72 /* NewsCardTableViewCell.xib */; };
+		63DB33422B0D95EE00432F72 /* NewsListScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB33412B0D95EE00432F72 /* NewsListScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		63DB33332B0CDE7900432F72 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		63DB333C2B0CF38300432F72 /* NewsCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsCardTableViewCell.swift; path = "Caploitte-iOS-assignment/common/views/NewsCardTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		63DB333D2B0CF38300432F72 /* NewsCardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NewsCardTableViewCell.xib; path = "Caploitte-iOS-assignment/common/views/NewsCardTableViewCell.xib"; sourceTree = SOURCE_ROOT; };
+		63DB33412B0D95EE00432F72 /* NewsListScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				63DB33362B0CEF5900432F72 /* homeScreen */,
+				63DB33402B0D95B500432F72 /* newListScreen */,
 			);
 			path = screens;
 			sourceTree = "<group>";
@@ -148,6 +151,14 @@
 				63DB33252B0BC3DC00432F72 /* HomeScreenViewController.swift */,
 			);
 			path = controller;
+			sourceTree = "<group>";
+		};
+		63DB33402B0D95B500432F72 /* newListScreen */ = {
+			isa = PBXGroup;
+			children = (
+				63DB33412B0D95EE00432F72 /* NewsListScreenViewController.swift */,
+			);
+			path = newListScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63DB33302B0CDB6E00432F72 /* NewsObjectModel.swift in Sources */,
+				63DB33422B0D95EE00432F72 /* NewsListScreenViewController.swift in Sources */,
 				63DB33292B0C495300432F72 /* CollectionViewCell.swift in Sources */,
 				63DB33322B0CDD0800432F72 /* NetworkService.swift in Sources */,
 				63DB332D2B0C643200432F72 /* NewsCategoryButtonCell.swift in Sources */,
