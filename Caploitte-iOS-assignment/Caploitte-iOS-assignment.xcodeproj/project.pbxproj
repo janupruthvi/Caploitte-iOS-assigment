@@ -29,6 +29,10 @@
 		63DB33522B0DF15D00432F72 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB33512B0DF15D00432F72 /* LoginViewController.swift */; };
 		63DB33542B0DF18D00432F72 /* RegisterUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB33532B0DF18D00432F72 /* RegisterUserViewController.swift */; };
 		63DB33562B0E0D0300432F72 /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB33552B0E0D0300432F72 /* UserDefaultService.swift */; };
+		63DB33582B0E400B00432F72 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB33572B0E400B00432F72 /* AuthenticationService.swift */; };
+		63DB335A2B0E538200432F72 /* NewsAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB33592B0E538200432F72 /* NewsAPIService.swift */; };
+		63DB335C2B0E55D200432F72 /* QueryRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB335B2B0E55D200432F72 /* QueryRequestModel.swift */; };
+		63DB335E2B0E56BE00432F72 /* NewsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB335D2B0E56BE00432F72 /* NewsCategory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +60,10 @@
 		63DB33512B0DF15D00432F72 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		63DB33532B0DF18D00432F72 /* RegisterUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserViewController.swift; sourceTree = "<group>"; };
 		63DB33552B0E0D0300432F72 /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefaultService.swift; path = "Caploitte-iOS-assignment/UserDefaultService.swift"; sourceTree = SOURCE_ROOT; };
+		63DB33572B0E400B00432F72 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		63DB33592B0E538200432F72 /* NewsAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIService.swift; sourceTree = "<group>"; };
+		63DB335B2B0E55D200432F72 /* QueryRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryRequestModel.swift; sourceTree = "<group>"; };
+		63DB335D2B0E56BE00432F72 /* NewsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCategory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,8 +101,11 @@
 				63DB33112B0BB3EE00432F72 /* AppDelegate.swift */,
 				63DB33132B0BB3EE00432F72 /* SceneDelegate.swift */,
 				63DB33312B0CDD0800432F72 /* NetworkService.swift */,
+				63DB33592B0E538200432F72 /* NewsAPIService.swift */,
 				63DB33552B0E0D0300432F72 /* UserDefaultService.swift */,
+				63DB33572B0E400B00432F72 /* AuthenticationService.swift */,
 				63DB33332B0CDE7900432F72 /* APIError.swift */,
+				63DB335D2B0E56BE00432F72 /* NewsCategory.swift */,
 				63DB331A2B0BB3F000432F72 /* Assets.xcassets */,
 				63DB331F2B0BB3F000432F72 /* Info.plist */,
 			);
@@ -126,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				63DB332F2B0CDB6E00432F72 /* NewsObjectModel.swift */,
+				63DB335B2B0E55D200432F72 /* QueryRequestModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -319,12 +331,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				63DB334B2B0DC5D100432F72 /* NewsDetailViewController.swift in Sources */,
+				63DB335A2B0E538200432F72 /* NewsAPIService.swift in Sources */,
 				63DB33462B0DA23700432F72 /* SearchScreenViewController.swift in Sources */,
 				63DB33302B0CDB6E00432F72 /* NewsObjectModel.swift in Sources */,
 				63DB33422B0D95EE00432F72 /* NewsListScreenViewController.swift in Sources */,
+				63DB335E2B0E56BE00432F72 /* NewsCategory.swift in Sources */,
 				63DB33292B0C495300432F72 /* CollectionViewCell.swift in Sources */,
 				63DB33322B0CDD0800432F72 /* NetworkService.swift in Sources */,
 				63DB332D2B0C643200432F72 /* NewsCategoryButtonCell.swift in Sources */,
+				63DB33582B0E400B00432F72 /* AuthenticationService.swift in Sources */,
 				63DB33262B0BC3DC00432F72 /* HomeScreenViewController.swift in Sources */,
 				63DB333E2B0CF38300432F72 /* NewsCardTableViewCell.swift in Sources */,
 				63DB33122B0BB3EE00432F72 /* AppDelegate.swift in Sources */,
@@ -332,6 +347,7 @@
 				63DB33142B0BB3EE00432F72 /* SceneDelegate.swift in Sources */,
 				63DB33522B0DF15D00432F72 /* LoginViewController.swift in Sources */,
 				63DB33562B0E0D0300432F72 /* UserDefaultService.swift in Sources */,
+				63DB335C2B0E55D200432F72 /* QueryRequestModel.swift in Sources */,
 				63DB33342B0CDE7900432F72 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

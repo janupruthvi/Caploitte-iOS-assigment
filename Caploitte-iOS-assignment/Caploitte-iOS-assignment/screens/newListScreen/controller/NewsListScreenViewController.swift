@@ -21,7 +21,7 @@ class NewsListScreenViewController: UIViewController {
         
         Task {
             do {
-                let newsList = try await NetworkService.shared.getNewsFeed()
+                let newsList = try await NewsAPIService.shared.getAllNews()
                 self.newsList = newsList.articles ?? []
                 newsListTableView.reloadData()
             } catch {

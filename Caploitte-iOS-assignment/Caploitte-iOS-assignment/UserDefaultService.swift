@@ -10,9 +10,11 @@ import Foundation
 class UserDefaultService {
     
     static let shared = UserDefaultService()
-    let userDefaultKey: String = "LOGIN_STATUS"
     
     private let userDefaults: UserDefaults
+    private let userDefaultKey: String = "LOGIN_STATUS"
+    private let userNameKey:String = "username"
+    private let passwordKey: String = "password"
     
 
     private init(userDefaults: UserDefaults = .standard) {
@@ -20,7 +22,7 @@ class UserDefaultService {
     }
     
     func storeLoginInfo(username: String, password: String) {
-        let loginInfo = (username: username, password: password)
+        let loginInfo: [String: Any] = [userNameKey: username, passwordKey: password]
         saveValue(value: loginInfo, key: username)
     }
     
@@ -29,8 +31,9 @@ class UserDefaultService {
     }
     
     func getLoggedUserInfo(forUsername username: String) -> (username: String?, password: String?) {
-        let usernameInfo: (username: String?, password: String?)? = readValue(key: username)
-        return (usernameInfo?.username, usernameInfo?.password)
+        let usernameInfo: [String: Any]? = readValue(key: username)
+        return (usernameInfo?[userNameKey] as? String,
+                usernameInfo?[passwordKey] as? String)
     }
     
     func getLoginStatus() -> Bool {

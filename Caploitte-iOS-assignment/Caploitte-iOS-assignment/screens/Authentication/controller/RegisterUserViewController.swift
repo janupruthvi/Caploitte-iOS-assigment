@@ -18,6 +18,7 @@ class RegisterUserViewController: UIViewController {
     }
     
     @IBAction func registerBtnPressed(_ sender: UIButton) {
+        self.register()
     }
     
     @IBAction func backBtnPressed(_ sender: UIButton) {
@@ -30,7 +31,10 @@ class RegisterUserViewController: UIViewController {
             return
         }
         
-        
+        if let username = self.usernameField.text,
+           let passwordField = self.passwordField.text {
+            AuthenticationService.shared.saveAndLoginUser(username: username, password: passwordField)
+        }
         
         
     }
@@ -49,7 +53,7 @@ class RegisterUserViewController: UIViewController {
             return false
         }
         
-        guard passwordField != confirmPasswordField else {
+        guard passwordField == confirmPasswordField else {
             return false
         }
         

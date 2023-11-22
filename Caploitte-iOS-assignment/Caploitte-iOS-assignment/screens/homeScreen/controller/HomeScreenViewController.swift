@@ -24,7 +24,7 @@ class HomeScreenViewController: UIViewController {
 
         Task {
             do {
-                let newsList = try await NetworkService.shared.getNewsFeed()
+                let newsList = try await NewsAPIService.shared.getAllNews()
                 self.newsList = newsList.articles ?? []
                 newsCardsTableView.reloadData()
             } catch {
@@ -98,7 +98,7 @@ extension HomeScreenViewController: UICollectionViewDataSource {
         if collectionView == self.headlinesCollectionView {
             return 5
         } else {
-            return 6
+            return NewsCategory.allCases.count
         }
         
     }
@@ -110,9 +110,7 @@ extension HomeScreenViewController: UICollectionViewDataSource {
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewsCategoryButtonCell", for: indexPath) as! NewsCategoryButtonCell
-            if indexPath.row == 2 {
-                cell.btnLabel.text = "helooom4534545345345533"
-            }
+            cell.btnLabel.text = NewsCategory.allCases[indexPath.item].rawValue
             return cell
         }
     }

@@ -13,8 +13,7 @@ class NetworkService {
     
     private init () {}
     
-    func getNewsFeed() async throws -> NewsObjectModel {
-        let endpoint = "https://newsapi.org/v2/everything?q=tesla&from=2023-10-21&sortBy=publishedAt&apiKey=9617bd6d0bf6426c8cee113b9b834237"
+    func getApiRequest<T: Decodable>(endpoint: String) async throws -> T {
         
         guard let url = URL(string: endpoint) else {
             throw APIError.invalidURL
@@ -28,11 +27,10 @@ class NetworkService {
         
         do {
             let decoder = JSONDecoder()
-            return try decoder.decode(NewsObjectModel.self, from: data)
+            return try decoder.decode(T.self, from: data)
         } catch {
             throw APIError.dataError
         }
-        
     }
     
     
