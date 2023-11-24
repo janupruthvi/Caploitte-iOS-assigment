@@ -15,22 +15,17 @@ class HomeScreenViewController: UIViewController {
     @IBOutlet weak var newsCardsTableView: UITableView!
     
     var newsList: [ArticlesObjectModel] = []
+    var newsListForHeadlines: [ArticlesObjectModel] = []
+    
+    var selectedCategory: NewsCategory?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configNIBs()
         setupUI()
-
-        Task {
-            do {
-                let newsList = try await NewsAPIService.shared.getAllNews()
-                self.newsList = newsList.articles ?? []
-                newsCardsTableView.reloadData()
-            } catch {
-                print("error ", error)
-            }
-        }
+        InitialNewsCategorySetup()
+//        getTopHeadlinesApiCall()
     }
     
     func setupUI() {
@@ -41,7 +36,9 @@ class HomeScreenViewController: UIViewController {
         newsCatButtonCollectionViewLayout.scrollDirection = .horizontal
         newsCatButtonCollectionViewLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         headlinesCollectionView.collectionViewLayout = headlinesCollectionViewLayout
+        headlinesCollectionView.allowsMultipleSelection = false
         newsCatButtonCollectionView.collectionViewLayout = newsCatButtonCollectionViewLayout
+        newsCatButtonCollectionView.allowsMultipleSelection = false
         
         headlinesCollectionView.dataSource = self
         headlinesCollectionView.delegate = self
@@ -57,7 +54,16 @@ class HomeScreenViewController: UIViewController {
         newsCardsTableView.rowHeight = 150
         newsCardsTableView.separatorStyle = .none
         
+        configSearchText()
         
+        
+    }
+    
+    func configSearchText() {
+        searchTxtField.clipsToBounds = true
+        searchTxtField.layer.borderWidth = 0.8
+        searchTxtField.layer.borderColor = UIColor.lightGray.cgColor
+        searchTxtField.layer.cornerRadius = 15
     }
     
     func configNIBs() {
@@ -66,14 +72,58 @@ class HomeScreenViewController: UIViewController {
         self.newsCardsTableView.register(UINib(nibName: "NewsCardTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsCardTableViewCell")
     }
     
-    func searchNews() {
+    func getTopHeadlinesApiCall() {
+        Task {
+            do {
+                let queryReuest = QueryRequestModel()
+                queryReuest.setCountryParam()
+                let newsList = try await NewsAPIService.shared.getHeadLineNews(queryReuest: queryReuest)
+                self.newsListForHeadlines = newsList.articles ?? []
+                headlinesCollectionView.reloadData()
+            } catch {
+                print("error ", error.localizedDescription)
+            }
+        }
+    }
+    
+    func getAllHeadlinesApiCall(currentPage: Int = 1) {
+        Task {
+            do {
+                let queryReuest = QueryRequestModel()
+                queryReuest.setCountryParam()
+                queryReuest.category = self.selectedCategory
+                queryReuest.page = currentPage
+                
+                let newsList = try await NewsAPIService.shared.getHeadLineNews(queryReuest: queryReuest)
+                self.newsList = newsList.articles ?? []
+                newsCardsTableView.reloadData()
+            } catch {
+                print("error ", error.localizedDescription)
+            }
+        }
+    }
+    
+    @objc func searchNews() {
         
         if let searchText = self.searchTxtField.text, !searchText.isEmpty {
             let searchScreenVC = self.storyboard?.instantiateViewController(withIdentifier: "SearchScreenVC") as! SearchScreenViewController
             searchScreenVC.searchText = searchText
             self.navigationController?.pushViewController(searchScreenVC, animated: true)
+            self.searchTxtField.resignFirstResponder()
+            self.searchTxtField.text = ""
         }
         
+    }
+    
+    func InitialNewsCategorySetup() {
+        let indexPath = IndexPath(item: 0, section: 0)
+        self.newsCatButtonCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
+        loadSelectedCategoryData(selectedCategory: NewsCategory.allCases[0])
+    }
+    
+    func loadSelectedCategoryData(selectedCategory: NewsCategory) {
+        self.selectedCategory = selectedCategory
+        //self.getAllHeadlinesApiCall()
     }
     
     func navigateToNewsDetails(newArticleObj: ArticlesObjectModel) {
@@ -89,6 +139,9 @@ class HomeScreenViewController: UIViewController {
         self.navigationController?.pushViewController(newsListScreenVC, animated: true)
     }
     
+    @IBAction func logoutpressed(_ sender: UIButton) {
+
+    }
     
 }
 
@@ -96,7 +149,7 @@ extension HomeScreenViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.headlinesCollectionView {
-            return 5
+            return newsListForHeadlines.count
         } else {
             return NewsCategory.allCases.count
         }
@@ -107,6 +160,7 @@ extension HomeScreenViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.headlinesCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
+            cell.newsArticle = newsListForHeadlines[indexPath.item]
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewsCategoryButtonCell", for: indexPath) as! NewsCategoryButtonCell
@@ -121,9 +175,27 @@ extension HomeScreenViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == self.headlinesCollectionView {
-            return CGSize(width: 320, height: 300)
+            return CGSize(width: 320, height: collectionView.frame.size.height)
         } else {
             return collectionView.frame.size
+        }
+    }
+    
+}
+
+extension HomeScreenViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == self.newsCatButtonCollectionView {
+            if let cell = collectionView.cellForItem(at: indexPath) as? NewsCategoryButtonCell {
+                cell.isSelected = true
+                let selectedCat = NewsCategory.allCases[indexPath.item]
+                loadSelectedCategoryData(selectedCategory: selectedCat)
+            }
+        }
+        
+        if collectionView == self.headlinesCollectionView {
+            navigateToNewsDetails(newArticleObj: self.newsListForHeadlines[indexPath.item])
         }
     }
     
@@ -156,8 +228,6 @@ extension HomeScreenViewController: UITableViewDelegate {
 extension HomeScreenViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchNews()
-        textField.resignFirstResponder()
-        textField.text = ""
         return true
     }
 }

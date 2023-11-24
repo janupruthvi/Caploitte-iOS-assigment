@@ -240,7 +240,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Ay6-Yu-e9X">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="qJN-s7-9Ue" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="AuthNavigationVC" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="qJN-s7-9Ue" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="is4-pu-MBi">

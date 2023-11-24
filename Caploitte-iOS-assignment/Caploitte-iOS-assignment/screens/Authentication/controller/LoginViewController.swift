@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
         if AuthenticationService.shared.retriveAndValidateLogin(username: username,
                                                                 password: passwordField) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let HomeScreenVC = storyboard.instantiateViewController(withIdentifier: "HomeScreenVC") as! HomeScreenViewController
+            let HomeScreenVC = storyboard.instantiateViewController(withIdentifier: "HomeRootNavigationVC")
             self.navigationController?.pushViewController(HomeScreenVC, animated: true)
             
         } else {

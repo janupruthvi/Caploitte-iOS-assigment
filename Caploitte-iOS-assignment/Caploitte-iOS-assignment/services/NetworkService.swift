@@ -13,11 +13,7 @@ class NetworkService {
     
     private init () {}
     
-    func getApiRequest<T: Decodable>(endpoint: String) async throws -> T {
-        
-        guard let url = URL(string: endpoint) else {
-            throw APIError.invalidURL
-        }
+    func getApiRequest<T: Decodable>(url: URL) async throws -> T {
         
         let (data, response) = try await URLSession.shared.data(from: url)
         

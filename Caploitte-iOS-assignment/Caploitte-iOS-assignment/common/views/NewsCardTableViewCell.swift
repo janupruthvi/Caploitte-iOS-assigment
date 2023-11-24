@@ -10,7 +10,7 @@ import UIKit
 class NewsCardTableViewCell: UITableViewCell {
 
     @IBOutlet weak var newsCardParentView: UIView!
-    @IBOutlet weak var newTitleLbl: UILabel!
+    @IBOutlet weak var newsTitleLbl: UILabel!
     @IBOutlet weak var authorLbl: UILabel!
     @IBOutlet weak var publishedDateLbl: UILabel!
     
@@ -31,7 +31,7 @@ class NewsCardTableViewCell: UITableViewCell {
             return
         }
         
-        newTitleLbl.text = articleObj.title
+        newsTitleLbl.text = articleObj.title
         authorLbl.text = articleObj.author
         publishedDateLbl.text = articleObj.publishedAt
         
@@ -41,12 +41,13 @@ class NewsCardTableViewCell: UITableViewCell {
     }
     
     func setupUI() {
-        newTitleLbl.numberOfLines = 2
-        newTitleLbl.lineBreakMode = NSLineBreakMode.byWordWrapping
-        newTitleLbl.sizeToFit()
-        newTitleLbl.textColor = UIColor.white
+        newsTitleLbl.numberOfLines = 2
+        newsTitleLbl.lineBreakMode = NSLineBreakMode.byWordWrapping
+        newsTitleLbl.sizeToFit()
+        newsTitleLbl.textColor = UIColor.white
         authorLbl.textColor = UIColor.white
         publishedDateLbl.textColor = UIColor.white
+        newsCardParentView.layer.cornerRadius = 15
     }
     
     func applyGradient() {

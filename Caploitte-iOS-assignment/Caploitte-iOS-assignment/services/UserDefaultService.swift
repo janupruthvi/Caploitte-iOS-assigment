@@ -13,8 +13,11 @@ class UserDefaultService {
     
     private let userDefaults: UserDefaults
     private let userDefaultKey: String = "LOGIN_STATUS"
+    private let userConfigKey: String = "USER_CONFIGS"
     private let userNameKey:String = "username"
     private let passwordKey: String = "password"
+    private let countryKey:String = "country"
+    private let languageKey: String = "language"
     
 
     private init(userDefaults: UserDefaults = .standard) {
@@ -30,10 +33,24 @@ class UserDefaultService {
         saveValue(value: isLoggedIn, key: self.userDefaultKey)
     }
     
+    func storeUserConfig(country: String, language: String) {
+        let userConfigInfo: [String: Any] = [countryKey: country, languageKey: language]
+        print("check country", country)
+        print("check language", language)
+        saveValue(value: userConfigInfo, key: userConfigKey)
+    }
+    
     func getLoggedUserInfo(forUsername username: String) -> (username: String?, password: String?) {
         let usernameInfo: [String: Any]? = readValue(key: username)
         return (usernameInfo?[userNameKey] as? String,
                 usernameInfo?[passwordKey] as? String)
+    }
+    
+    func getLoggedConfigInfo() -> (country: Country?, language: Language?) {
+        let userConfig: [String: Any]? = readValue(key: userConfigKey)
+        let language = Language(rawValue: userConfig?[languageKey] as? String ?? "")
+        let country = Country(rawValue: userConfig?[countryKey] as? String ?? "")
+        return (country,language)
     }
     
     func getLoginStatus() -> Bool {
