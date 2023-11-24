@@ -13,15 +13,16 @@ class AuthenticationService {
     
     let isUserLoggedIn = UserDefaultService.shared.getLoginStatus()
     
-    var loggedInUsername: String?
-    
     private let userDefaults = UserDefaultService.shared
     
-    private init(){}
+    private init(){
+        
+    }
     
     
     func saveAndLoginUser(username: String, password: String) {
         self.userDefaults.storeLoginInfo(username: username, password: password)
+        self.userDefaults.removeUserConfigData()
         self.userDefaults.storeloginStatus(isLoggedIn: true)
     }
     
@@ -39,10 +40,13 @@ class AuthenticationService {
             return false
         }
         
-        self.loggedInUsername = username
         self.userDefaults.storeloginStatus(isLoggedIn: true)
         
         return true
+    }
+    
+    func getLoggedInUsername() -> String {
+        UserDefaultService.shared.getLoggedInUsername()
     }
     
     func logoutUser() {

@@ -14,6 +14,7 @@ class UserDefaultService {
     private let userDefaults: UserDefaults
     private let userDefaultKey: String = "LOGIN_STATUS"
     private let userConfigKey: String = "USER_CONFIGS"
+    private let loggedUsernameKey: String = "LOGGED_IN_USER"
     private let userNameKey:String = "username"
     private let passwordKey: String = "password"
     private let countryKey:String = "country"
@@ -27,6 +28,7 @@ class UserDefaultService {
     func storeLoginInfo(username: String, password: String) {
         let loginInfo: [String: Any] = [userNameKey: username, passwordKey: password]
         saveValue(value: loginInfo, key: username)
+        saveValue(value: username, key: loggedUsernameKey)
     }
     
     func storeloginStatus(isLoggedIn: Bool){
@@ -42,6 +44,9 @@ class UserDefaultService {
     
     func getLoggedUserInfo(forUsername username: String) -> (username: String?, password: String?) {
         let usernameInfo: [String: Any]? = readValue(key: username)
+        if let currentUser = usernameInfo?[userNameKey] {
+            saveValue(value: currentUser, key: loggedUsernameKey)
+        }
         return (usernameInfo?[userNameKey] as? String,
                 usernameInfo?[passwordKey] as? String)
     }
@@ -56,6 +61,15 @@ class UserDefaultService {
     func getLoginStatus() -> Bool {
         let usernameInfo: Bool? = readValue(key: userDefaultKey)
         return usernameInfo ?? false
+    }
+    
+    func getLoggedInUsername() -> String {
+        let usernameInfo: String? = readValue(key: loggedUsernameKey)
+        return usernameInfo ?? ""
+    }
+    
+    func removeUserConfigData() {
+        userDefaults.removeObject(forKey: userConfigKey)
     }
     
     private func saveValue(value: Any, key: String) {

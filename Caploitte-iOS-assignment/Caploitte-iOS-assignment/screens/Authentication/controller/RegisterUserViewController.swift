@@ -13,8 +13,11 @@ class RegisterUserViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var confirmPasswordField: UITextField!
     
+    let alert = AlertController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        alert.viewController = self
     }
     
     @IBAction func registerBtnPressed(_ sender: UIButton) {
@@ -28,12 +31,18 @@ class RegisterUserViewController: UIViewController {
     func register() {
         
         guard validation() else {
+            alert.showAlert(title: "Registration failed", message: "Please provide valid data")
             return
         }
         
         if let username = self.usernameField.text,
            let passwordField = self.passwordField.text {
             AuthenticationService.shared.saveAndLoginUser(username: username, password: passwordField)
+            let window = view.window
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginViewVC = storyboard.instantiateViewController(withIdentifier: "HomeRootNavigationVC")
+            window?.rootViewController = loginViewVC
+            window?.makeKeyAndVisible()
         }
         
         

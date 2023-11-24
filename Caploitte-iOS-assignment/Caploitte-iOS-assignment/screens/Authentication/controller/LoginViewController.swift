@@ -12,28 +12,37 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTxtField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
+    let alert = AlertController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        alert.viewController = self
     }
     
     func loginUser() {
         
         guard let username = self.usernameTxtField.text, !username.isEmpty else {
+            alert.showAlert(title: "Unable to Login", message: "username is required")
             return
         }
         
         guard let passwordField = self.passwordField.text, !passwordField.isEmpty else {
+            alert.showAlert(title: "Unable to Login", message: "password is required")
             return
         }
         
         if AuthenticationService.shared.retriveAndValidateLogin(username: username,
                                                                 password: passwordField) {
+            
+            let window = view.window
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let HomeScreenVC = storyboard.instantiateViewController(withIdentifier: "HomeRootNavigationVC")
-            self.navigationController?.pushViewController(HomeScreenVC, animated: true)
+            let loginViewVC = storyboard.instantiateViewController(withIdentifier: "HomeRootNavigationVC")
+            window?.rootViewController = loginViewVC
+            window?.makeKeyAndVisible()
             
         } else {
-            print("login failed")
+            alert.showAlert(title: "Unable to Login", message: "Invalid credentials provided")
+
         }
         
     }

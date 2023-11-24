@@ -41,6 +41,7 @@
 		63DB336F2B0FC03500432F72 /* LanguageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB336E2B0FC03500432F72 /* LanguageList.swift */; };
 		63DB33722B105FA400432F72 /* LoadingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB33702B105FA400432F72 /* LoadingViewCell.swift */; };
 		63DB33732B105FA400432F72 /* LoadingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DB33712B105FA400432F72 /* LoadingViewCell.xib */; };
+		63DB33752B10A86500432F72 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB33742B10A86500432F72 /* AlertController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		63DB336E2B0FC03500432F72 /* LanguageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageList.swift; sourceTree = "<group>"; };
 		63DB33702B105FA400432F72 /* LoadingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewCell.swift; sourceTree = "<group>"; };
 		63DB33712B105FA400432F72 /* LoadingViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingViewCell.xib; sourceTree = "<group>"; };
+		63DB33742B10A86500432F72 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,6 +293,7 @@
 				63DB33332B0CDE7900432F72 /* APIError.swift */,
 				63DB336C2B0FBDFA00432F72 /* CountryList.swift */,
 				63DB336E2B0FC03500432F72 /* LanguageList.swift */,
+				63DB33742B10A86500432F72 /* AlertController.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				63DB33582B0E400B00432F72 /* AuthenticationService.swift in Sources */,
 				63DB33662B0F894C00432F72 /* TabBarView.swift in Sources */,
 				63DB33262B0BC3DC00432F72 /* HomeScreenViewController.swift in Sources */,
+				63DB33752B10A86500432F72 /* AlertController.swift in Sources */,
 				63DB333E2B0CF38300432F72 /* NewsCardTableViewCell.swift in Sources */,
 				63DB33722B105FA400432F72 /* LoadingViewCell.swift in Sources */,
 				63DB33122B0BB3EE00432F72 /* AppDelegate.swift in Sources */,
@@ -551,6 +555,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DH4Q336B8N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Caploitte-iOS-assignment/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -578,6 +583,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DH4Q336B8N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Caploitte-iOS-assignment/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

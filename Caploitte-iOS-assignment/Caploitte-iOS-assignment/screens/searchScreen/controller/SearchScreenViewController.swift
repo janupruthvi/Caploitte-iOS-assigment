@@ -68,9 +68,9 @@ class SearchScreenViewController: UIViewController {
                 }
                 
                 newsListTableView.reloadData()
-                self.isDataLoading = true
+                self.isDataLoading = false
             } catch {
-                self.isDataLoading = true
+                self.isDataLoading = false
                 print("error ", error.localizedDescription)
             }
         }

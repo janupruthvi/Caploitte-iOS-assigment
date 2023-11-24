@@ -19,7 +19,7 @@ class QueryRequestModel {
     init(){}
     
     func setCountryParam() {
-        self.country = (UserDefaultService.shared.getLoggedConfigInfo().country)?.rawValue ?? nil
+        self.country = (UserDefaultService.shared.getLoggedConfigInfo().country)?.rawValue ?? "us"
     }
     
     func setLanguageParam() {

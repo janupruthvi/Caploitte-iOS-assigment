@@ -19,13 +19,15 @@ class HomeScreenViewController: UIViewController {
     
     var selectedCategory: NewsCategory?
     
+    let alert = AlertController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configNIBs()
         setupUI()
         InitialNewsCategorySetup()
-//        getTopHeadlinesApiCall()
+        getTopHeadlinesApiCall()
     }
     
     func setupUI() {
@@ -54,6 +56,8 @@ class HomeScreenViewController: UIViewController {
         newsCardsTableView.rowHeight = 150
         newsCardsTableView.separatorStyle = .none
         
+        alert.viewController = self
+        
         configSearchText()
         
         
@@ -80,8 +84,14 @@ class HomeScreenViewController: UIViewController {
                 let newsList = try await NewsAPIService.shared.getHeadLineNews(queryReuest: queryReuest)
                 self.newsListForHeadlines = newsList.articles ?? []
                 headlinesCollectionView.reloadData()
+            } catch APIError.dataError {
+                alert.showAlert(title: "Unable to load news", message: "Issue while processing data")
+            } catch APIError.invalidURL {
+                alert.showAlert(title: "Unable to load news", message: "Invalid url")
+            } catch APIError.serverError {
+                alert.showAlert(title: "Unable to load news", message: "Internal server error")
             } catch {
-                print("error ", error.localizedDescription)
+                alert.showAlert(title: "Unable to load news", message: "something went wrong")
             }
         }
     }
@@ -97,8 +107,14 @@ class HomeScreenViewController: UIViewController {
                 let newsList = try await NewsAPIService.shared.getHeadLineNews(queryReuest: queryReuest)
                 self.newsList = newsList.articles ?? []
                 newsCardsTableView.reloadData()
+            } catch APIError.dataError {
+                alert.showAlert(title: "Unable to load news", message: "Issue while processing data")
+            } catch APIError.invalidURL {
+                alert.showAlert(title: "Unable to load news", message: "Invalid url")
+            } catch APIError.serverError {
+                alert.showAlert(title: "Unable to load news", message: "Internal server error")
             } catch {
-                print("error ", error.localizedDescription)
+                alert.showAlert(title: "Unable to load news", message: "something went wrong")
             }
         }
     }
@@ -123,7 +139,7 @@ class HomeScreenViewController: UIViewController {
     
     func loadSelectedCategoryData(selectedCategory: NewsCategory) {
         self.selectedCategory = selectedCategory
-        //self.getAllHeadlinesApiCall()
+        self.getAllHeadlinesApiCall()
     }
     
     func navigateToNewsDetails(newArticleObj: ArticlesObjectModel) {

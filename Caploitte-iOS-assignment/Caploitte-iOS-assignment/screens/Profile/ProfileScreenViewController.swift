@@ -55,7 +55,7 @@ class ProfileScreenViewController: UIViewController {
     }
     
     func loadDataforUI() {
-        usernameTxtField.text = AuthenticationService.shared.loggedInUsername
+        usernameTxtField.text = AuthenticationService.shared.getLoggedInUsername()
         if let selectedLanguage = UserDefaultService.shared.getLoggedConfigInfo().language {
             self.selectedLanguage = UserDefaultService.shared.getLoggedConfigInfo().language?.rawValue
             languageTxtField.text = String(describing: selectedLanguage)
@@ -77,10 +77,12 @@ class ProfileScreenViewController: UIViewController {
     
     func signOutUser() {
         AuthenticationService.shared.logoutUser()
+        let window = view.window
         let storyboard = UIStoryboard(name: "Authentication", bundle: nil)
         let loginViewVC = storyboard.instantiateViewController(withIdentifier: "AuthNavigationVC")
-        loginViewVC.modalPresentationStyle = .fullScreen
-        self.navigationController?.present(loginViewVC, animated: true)
+        window?.rootViewController = loginViewVC
+        window?.makeKeyAndVisible()
+        
     }
     
     @objc func doneBtnPressed() {
