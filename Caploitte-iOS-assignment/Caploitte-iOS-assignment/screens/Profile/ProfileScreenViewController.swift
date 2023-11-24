@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol UserSettingDelegate {
+    func didApplyFilter()
+}
+
 class ProfileScreenViewController: UIViewController {
     
     @IBOutlet weak var usernameTxtField: UITextField!
@@ -18,6 +22,8 @@ class ProfileScreenViewController: UIViewController {
     
     var selectedCountry: String?
     var selectedLanguage: String?
+    
+    var settingDelegate: UserSettingDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +78,10 @@ class ProfileScreenViewController: UIViewController {
         
         UserDefaultService.shared.storeUserConfig(country: selectedCountry ?? "",
                                                   language: selectedLanguage ?? "")
+        settingDelegate.didApplyFilter()
+        self.tabBarController?.selectedIndex = 0
+//        let homescreenVC = self.tabBarController?.navigationController?.viewControllers[0] as? HomeScreenViewController
+//        homescreenVC?.getTopHeadlinesApiCall()
                 
     }
     

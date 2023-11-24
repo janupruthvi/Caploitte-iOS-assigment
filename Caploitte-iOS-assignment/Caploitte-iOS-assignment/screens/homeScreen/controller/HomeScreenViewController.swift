@@ -42,6 +42,9 @@ class HomeScreenViewController: UIViewController {
         newsCatButtonCollectionView.collectionViewLayout = newsCatButtonCollectionViewLayout
         newsCatButtonCollectionView.allowsMultipleSelection = false
         
+        let profileFilterVC = tabBarController?.viewControllers![1] as? ProfileScreenViewController
+        profileFilterVC?.settingDelegate = self
+        
         headlinesCollectionView.dataSource = self
         headlinesCollectionView.delegate = self
         
@@ -245,5 +248,12 @@ extension HomeScreenViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchNews()
         return true
+    }
+}
+
+extension HomeScreenViewController: UserSettingDelegate {
+    func didApplyFilter() {
+        self.getTopHeadlinesApiCall()
+        self.getAllHeadlinesApiCall()
     }
 }
